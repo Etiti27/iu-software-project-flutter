@@ -1,0 +1,112 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.buildlog/
+.history
+.svn/
+migrate_working_dir/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+#.vscode/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+/build/
+
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# Android Studio will place build artifacts here
+/android/app/debug
+/android/app/profile
+/android/app/release
+
+# Flutter and Dart related
+
+.packages
+build/
+flutter_*.png
+
+# Flutter specific
+
+.flutter-plugins-dependencies.lock
+.metadata
+android/.gradle/
+android/app/google-services.json
+android/key.properties
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+ios/Flutter/Flutter.xcframework
+ios/Flutter/engine
+ios/Flutter/App.framework
+ios/Flutter/Generated.xcconfig
+ios/.symlinks/
+ios/Pods/
+ios/Podfile.lock
+ios/Runner.xcworkspace/
+ios/.generated/
+macos/Pods/
+macos/Podfile.lock
+macos/Runner.xcworkspace/
+web/.dart_tool/
+web/.firebase/
+web/build/
+
+# Firebase related
+# Android
+
+
+# iOS
+ios/Runner/GoogleService-Info.plist
+
+# Firestore
+**/firebase-debug.log
+
+# Swift Package Manager
+.swiftpm/xcode/package.xcworkspace/
+swiftpm
+xcuserdata/
+
+# Package Configurations
+
+.vscode/
+
+
+# User-specific and System files
+
+*.tmp
+
+*.lock
+
+# IntelliJ related
+
+
+# Visual Studio Code related
+
+
+# Miscellaneous
+
+*.orig
+
+
