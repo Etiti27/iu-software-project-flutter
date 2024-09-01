@@ -8,10 +8,15 @@ class bottomAppWidget extends StatelessWidget {
     return Container(
       height: 50.0,
       color: Color(kBackgroundColor),
-      child: Center(
-        child: Text(
-          "this is a project app, all right reserved, \n copyright © 2024",
-          style: TextStyle(color: Colors.white),
+      child: const Center(
+        child: Column(
+          children: [
+            Text(
+              "All right reserved",
+              style: TextStyle(color: Colors.white),
+            ),
+            Text("Copyright © 2024", style: TextStyle(color: Colors.white))
+          ],
         ),
       ),
     );

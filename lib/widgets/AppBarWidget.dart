@@ -12,7 +12,10 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: Iconss,
+      leading: Padding(
+        padding: EdgeInsets.only(left: 20.0),
+        child: Iconss,
+      ),
       title: Text(
         title,
         textAlign: TextAlign.center,

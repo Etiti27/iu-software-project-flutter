@@ -1,9 +1,12 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:chris_dev_app/Constants.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/AppBarWidget.dart';
 import '../widgets/BottomAppWidget.dart';
+import '../widgets/ButtonWidget.dart';
+import 'Decision.dart';
+import 'Login.dart';
 
 class Homescreen extends StatefulWidget {
   const Homescreen({super.key});
@@ -16,6 +19,8 @@ class Homescreen extends StatefulWidget {
 class _HomescreenState extends State<Homescreen> {
   String title = "Chris IU Projects";
   Image image = Image.asset("images/iu_en.png");
+  void buttonPressed = () {};
+  String buttonText = "Get Started!";
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -30,8 +35,11 @@ class _HomescreenState extends State<Homescreen> {
             children: [
               const Expanded(
                 flex: 1,
-                child: Image(
-                  image: AssetImage("images/iu_en.png"),
+                child: Hero(
+                  tag: "logo1",
+                  child: Image(
+                    image: AssetImage("images/iu_en.png"),
+                  ),
                 ),
               ),
               const SizedBox(
@@ -58,12 +66,15 @@ class _HomescreenState extends State<Homescreen> {
               ),
               Expanded(
                 child: Center(
-                  child: FilledButton(
-                    onPressed: () {},
-                    child: Text("Get Started!"),
-                    style: FilledButton.styleFrom(
-                        backgroundColor: const Color(kBackgroundColor)),
-                  ),
+                  child: ButtonWidget(() {
+                    FirebaseAuth auth = FirebaseAuth.instance;
+                    User? user = auth.currentUser;
+                    if (user != null) {
+                      Navigator.pushNamed(context, Decision.id);
+                    } else {
+                      Navigator.pushNamed(context, Login.id);
+                    }
+                  }, buttonText),
                 ),
               )
             ],
