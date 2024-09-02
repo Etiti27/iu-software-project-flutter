@@ -44,11 +44,20 @@ class _DecisionState extends State<Decision> {
             ),
             const Text(
               "Best Community",
-              style: TextStyle(fontFamily: "Roboto", fontSize: 30.0),
+              style: TextStyle(
+                fontFamily: "Roboto",
+                fontSize: 30.0,
+              ),
+            ),
+            const SizedBox(
+              height: 20.0,
             ),
             const Text(
               "What do you want to do in our community today?",
-              style: TextStyle(fontFamily: "Pacifico", fontSize: 15.0),
+              style: TextStyle(
+                fontFamily: "Pacifico",
+                fontSize: 15.0,
+              ),
             ),
             const SizedBox(
               height: 20.0,
@@ -63,7 +72,7 @@ class _DecisionState extends State<Decision> {
                         padding: const EdgeInsets.all(8.0),
                         child: FilledButton(
                           style: FilledButton.styleFrom(
-                            backgroundColor: Color(kBackgroundColor),
+                            backgroundColor: const Color(kBackgroundColor),
                           ),
                           onPressed: () {
                             if (myDecision[index] == "To Do") {
@@ -74,7 +83,6 @@ class _DecisionState extends State<Decision> {
                             } else if (myDecision[index] == "Chat App") {
                               Navigator.pushNamed(context, Chatapp.id);
                             }
-                            print("i am " + myDecision[index]);
                           },
                           child: ListTile(
                             iconColor: Colors.white,

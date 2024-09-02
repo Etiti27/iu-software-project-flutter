@@ -11,20 +11,22 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      leading: Padding(
-        padding: EdgeInsets.only(left: 20.0),
-        child: Iconss,
+    return SafeArea(
+      child: AppBar(
+        leading: Padding(
+          padding: EdgeInsets.only(left: 20.0),
+          child: Iconss,
+        ),
+        title: Text(
+          title,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+              color: Colors.white, fontSize: 20.0, fontFamily: "Roboto"),
+        ),
+        centerTitle: true,
+        backgroundColor: const Color(kBackgroundColor),
+        actions: [PopmenuButton()],
       ),
-      title: Text(
-        title,
-        textAlign: TextAlign.center,
-        style: TextStyle(
-            color: Colors.white, fontSize: 20.0, fontFamily: "Roboto"),
-      ),
-      centerTitle: true,
-      backgroundColor: const Color(kBackgroundColor),
-      actions: [PopmenuButton()],
     );
   }
 

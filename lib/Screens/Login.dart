@@ -23,102 +23,112 @@ class _LoginState extends State<Login> {
   );
   late String email;
   late String password;
+  late bool _isLoading = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarWidget(image, "Login"),
       bottomNavigationBar: bottomAppWidget(),
-      body: Container(
-        margin: const EdgeInsets.symmetric(vertical: 0.0, horizontal: 20.0),
-        child: Column(
-          children: [
-            const Expanded(
-              child: Hero(
-                tag: "logo1",
-                child: Image(
-                  width: 250.0,
-                  image: AssetImage("images/iu_en.png"),
-                ),
-              ),
-            ),
-            const Text(
-              "Login",
-              style: TextStyle(fontSize: 30.0),
-            ),
-            const SizedBox(
-              height: 20.0,
-            ),
-            Expanded(
+      body: _isLoading
+          ? const Center(
+              child: CircularProgressIndicator(),
+            )
+          : Container(
+              margin:
+                  const EdgeInsets.symmetric(vertical: 0.0, horizontal: 20.0),
               child: Column(
                 children: [
-                  TextField(
-                    onChanged: (newEmail) {
-                      setState(() {
-                        email = newEmail;
-                      });
-                    },
-                    autofocus: false,
-                    keyboardType: TextInputType.emailAddress,
-                    decoration: InputDecor("Enter Your E-mail", "E-mail:"),
+                  const Expanded(
+                    child: Hero(
+                      tag: "logo1",
+                      child: Image(
+                        width: 250.0,
+                        image: AssetImage("images/iu_en.png"),
+                      ),
+                    ),
+                  ),
+                  const Text(
+                    "Login",
+                    style: TextStyle(fontSize: 30.0),
                   ),
                   const SizedBox(
                     height: 20.0,
                   ),
-                  TextField(
-                    onChanged: (newPassword) {
-                      setState(() {
-                        password = newPassword;
-                      });
-                    },
-                    autofocus: false,
-                    obscureText: true,
-                    keyboardType: TextInputType.text,
-                    decoration: InputDecor("Enter Your Password", "Password:"),
+                  Expanded(
+                    child: Column(
+                      children: [
+                        TextField(
+                          onChanged: (newEmail) {
+                            setState(() {
+                              email = newEmail;
+                            });
+                          },
+                          autofocus: false,
+                          keyboardType: TextInputType.emailAddress,
+                          decoration:
+                              InputDecor("Enter Your E-mail", "E-mail:"),
+                        ),
+                        const SizedBox(
+                          height: 20.0,
+                        ),
+                        TextField(
+                          onChanged: (newPassword) {
+                            setState(() {
+                              password = newPassword;
+                            });
+                          },
+                          autofocus: false,
+                          obscureText: true,
+                          keyboardType: TextInputType.text,
+                          decoration:
+                              InputDecor("Enter Your Password", "Password:"),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            ButtonWidget(() async {
+                              setState(() {
+                                _isLoading = true;
+                              });
+                              FirebaseAuth auth = FirebaseAuth.instance;
+                              await auth.signInWithEmailAndPassword(
+                                  email: email, password: password);
+                              Navigator.pushNamed(context, Decision.id);
+                              _isLoading = false;
+                            }, "Login"),
+                          ],
+                        )
+                      ],
+                    ),
                   ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      ButtonWidget(() async {
-                        FirebaseAuth auth = FirebaseAuth.instance;
-                        if (email != null && password != null) {
-                          await auth.signInWithEmailAndPassword(
-                              email: email, password: password);
-                          Navigator.pushNamed(context, Decision.id);
-                        }
-                      }, "Login"),
-                    ],
-                  )
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 30.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text("Don't have an account yet? "),
-                  SizedBox(
-                    width: 20.0,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, Registration.id);
-                    },
-                    child: const Text(
-                      "Register",
-                      style: TextStyle(color: Colors.indigo),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 30.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text("Don't have an account yet? "),
+                        const SizedBox(
+                          width: 20.0,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pushNamed(context, Registration.id);
+                          },
+                          child: const Text(
+                            "Register",
+                            style: TextStyle(color: Colors.indigo),
+                          ),
+                        )
+                      ],
                     ),
                   )
                 ],
               ),
-            )
-          ],
-        ),
-      ),
+            ),
     );
   }
 }
