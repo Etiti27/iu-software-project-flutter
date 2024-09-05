@@ -27,7 +27,7 @@ class _TodoState extends State<Todo> {
             },
             child: const Icon(Icons.arrow_back_ios_new),
           ),
-          "$title"),
+          "T0-DO"),
       // bottomNavigationBar: bottomAppWidget(),
       body: StreamBuilder(
           stream: FirebaseFirestore.instance

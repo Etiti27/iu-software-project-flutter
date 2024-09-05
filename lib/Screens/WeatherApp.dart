@@ -1,4 +1,3 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:chris_dev_app/Method/CountryShortCodes.dart';
 import 'package:chris_dev_app/Method/GeoLocator.dart';
 import 'package:chris_dev_app/Method/OpenWeather.dart';
@@ -142,19 +141,24 @@ class _WeatherappState extends State<Weatherapp> {
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.only(top: 50.0),
-                    child: AnimatedTextKit(
-                      animatedTexts: [
-                        TypewriterAnimatedText(
-                          country.toUpperCase(),
-                          textStyle: const TextStyle(
-                            fontSize: 32.0,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          speed: const Duration(milliseconds: 250),
-                        ),
-                      ],
-                      repeatForever: true,
+                    child: Text(
+                      country.toUpperCase(),
+                      style:
+                          const TextStyle(fontFamily: "Roboto", fontSize: 32),
                     ),
+                    // AnimatedTextKit(
+                    //   animatedTexts: [
+                    //     TypewriterAnimatedText(
+                    //       country.toUpperCase(),
+                    //       textStyle: const TextStyle(
+                    //         fontSize: 32.0,
+                    //         fontWeight: FontWeight.bold,
+                    //       ),
+                    //       speed: const Duration(milliseconds: 250),
+                    //     ),
+                    //   ],
+                    //   repeatForever: true,
+                    // ),
                   ),
                 ),
                 Expanded(
