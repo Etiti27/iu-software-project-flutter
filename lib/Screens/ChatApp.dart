@@ -10,10 +10,10 @@ import '../Method/InputDecoration.dart';
 class Chatapp extends StatefulWidget {
   static const String id = "chatapp";
   @override
-  State<Chatapp> createState() => _TodoState();
+  State<Chatapp> createState() => _ChatappState();
 }
 
-class _TodoState extends State<Chatapp> {
+class _ChatappState extends State<Chatapp> {
   FirebaseAuth auth = FirebaseAuth.instance;
 
   List<String> message = ["welcome", "Enugu"];
@@ -66,10 +66,10 @@ class _TodoState extends State<Chatapp> {
                       controllerText.clear();
                       User? user = auth.currentUser;
                       FirebaseClass().addMessage(
-                        text,
-                        user.toString(),
-                        FirebaseClass().getCurrentUser()!.email.toString(),
-                      );
+                          text,
+                          user.toString(),
+                          FirebaseClass().getCurrentUser()!.email.toString(),
+                          "messages");
                     },
                     child: const Icon(Icons.send),
                   ),

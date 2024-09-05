@@ -90,16 +90,19 @@ class _LoginState extends State<Login> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            ButtonWidget(() async {
-                              setState(() {
-                                _isLoading = true;
-                              });
-                              FirebaseAuth auth = FirebaseAuth.instance;
-                              await auth.signInWithEmailAndPassword(
-                                  email: email, password: password);
-                              Navigator.pushNamed(context, Decision.id);
-                              _isLoading = false;
-                            }, "Login"),
+                            ButtonWidget(
+                              () async {
+                                setState(() {
+                                  _isLoading = true;
+                                });
+                                FirebaseAuth auth = FirebaseAuth.instance;
+                                await auth.signInWithEmailAndPassword(
+                                    email: email, password: password);
+                                Navigator.pushNamed(context, Decision.id);
+                                _isLoading = false;
+                              },
+                              "Login",
+                            ),
                           ],
                         )
                       ],

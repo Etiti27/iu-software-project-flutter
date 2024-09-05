@@ -14,9 +14,9 @@ class FirebaseClass {
     return auth.currentUser;
   }
 
-  void addMessage(String text, String sender, String senderEmail) async {
-    CollectionReference items =
-        FirebaseFirestore.instance.collection('messages');
+  void addMessage(
+      String text, String sender, String senderEmail, String message) async {
+    CollectionReference items = FirebaseFirestore.instance.collection(message);
     Map<String, Object> messages = {
       "text": text,
       "email": senderEmail,
