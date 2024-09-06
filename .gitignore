@@ -7,6 +7,7 @@
 .DS_Store
 .atom/
 
+
 .buildlog/
 .history
 .svn/
@@ -33,6 +34,7 @@ migrate_working_dir/
 .pub/
 /build/
 
+
 # Symbolication related
 app.*.symbols
 
@@ -51,7 +53,7 @@ build/
 flutter_*.png
 
 # Flutter specific
-
+*.env
 .flutter-plugins-dependencies.lock
 .metadata
 android/.gradle/
@@ -111,4 +113,5 @@ xcuserdata/
 
 *.orig
 
-
+#custom file
+video presentation.mp4
